@@ -1,0 +1,41 @@
+<h2><%= isEdit ? 'Edit User' : 'Add User' %></h2>
+
+<form method="post" action="<%= isEdit ? '/users/' + user.id + '/edit' : '/users/add' %>">
+    <label>Username:
+        <input type="text" name="username" value="<%= user.username || '' %>" required />
+    </label><br/>
+
+    <label>Password:
+        <input type="password" name="password" <%= isEdit ? '' : 'required' %> />
+        <% if(isEdit) { %><small>Leave blank to keep current password</small><% } %>
+    </label><br/>
+
+    <label>First Name:
+        <input type="text" name="first_name" value="<%= user.first_name || '' %>" />
+    </label><br/>
+
+    <label>Last Name:
+        <input type="text" name="last_name" value="<%= user.last_name || '' %>" />
+    </label><br/>
+
+    <label>Gender:
+        <select name="gender">
+            <option value="" <%= !user.gender ? 'selected' : '' %>>Select</option>
+            <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+            <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+            <option value="other" <%= user.gender === 'other' ? 'selected' : '' %>>Other</option>
+        </select>
+    </label><br/>
+
+    <label>Birthdate:
+        <input type="date" name="birthdate" value="<%= user.birthdate || '' %>" />
+    </label><br/>
+
+    <button type="submit"><%= isEdit ? 'Update' : 'Add' %></button>
+</form>
+
+<% if(errors.message) { %>
+    <p style="color:red;"><%= errors.message %></p>
+<% } %>
+
+<a href="/users">Back to list</a>

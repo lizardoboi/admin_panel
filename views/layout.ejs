@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= title || 'User Admin' %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<header>
+    <h1>User Administration</h1>
+    <% if (user) { %>
+        <p>
+            Welcome, <%= user.username %>
+            |
+            <a href="/users">User List</a>
+            |
+            <a href="/users/add">Add User (test)</a>
+            |
+        <form action="/auth/logout" method="post" style="display:inline;" onsubmit="return true;">
+            <button type="submit">Logout</button>
+        </form>
+        </p>
+    <% } %>
+    <hr />
+</header>
+
+<main>
+    <%- body %>
+</main>
+
+</body>
+</html>

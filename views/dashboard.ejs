@@ -1,0 +1,38 @@
+<h2>Users List</h2>
+<a href="/users/add">Add New User</a>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+    <tr>
+        <th><a href="?sort=username&order=<%= sort === 'username' && order === 'ASC' ? 'DESC' : 'ASC' %>">Username</a></th>
+        <th><a href="?sort=first_name&order=<%= sort === 'first_name' && order === 'ASC' ? 'DESC' : 'ASC' %>">First Name</a></th>
+        <th><a href="?sort=birthdate&order=<%= sort === 'birthdate' && order === 'ASC' ? 'DESC' : 'ASC' %>">Birthdate</a></th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% users.forEach(user => { %>
+        <tr>
+            <td><a href="/users/<%= user.id %>"><%= user.username %></a></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.birthdate %></td>
+            <td>
+                <a href="/users/<%= user.id %>/edit">Edit</a> |
+                <form method="post" action="/users/<%= user.id %>/delete" style="display:inline;" onsubmit="return confirm('Delete this user?');">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+
+<div>
+    <% for(let i=1; i <= totalPages; i++) { %>
+        <% if(i === currentPage) { %>
+            <strong><%= i %></strong>
+        <% } else { %>
+            <a href="?page=<%= i %>&sort=<%= sort %>&order=<%= order %>"><%= i %></a>
+        <% } %>
+    <% } %>
+</div>
