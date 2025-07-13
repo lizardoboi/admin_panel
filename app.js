@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configure session for user authentication
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'secretkey',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
 }));
