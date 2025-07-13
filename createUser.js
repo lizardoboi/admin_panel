@@ -5,7 +5,7 @@ const { sequelize, User } = require('./models');
 async function createAdminUser() {
     try {
         await sequelize.authenticate();
-        console.log('✅ Connected to DB');
+        console.log('Connected to DB');
 
         const passwordHash = await bcrypt.hash('admin123', 10);
 
@@ -18,10 +18,10 @@ async function createAdminUser() {
             birthdate: '1990-01-01',
         });
 
-        console.log('✅ Admin user created:', user.username);
+        console.log('Admin user created:', user.username);
         process.exit(0);
     } catch (err) {
-        console.error('❌ Error creating user:', err);
+        console.error('Error creating user:', err);
         process.exit(1);
     }
 }
