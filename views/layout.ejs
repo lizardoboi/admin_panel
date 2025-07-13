@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title><%= title || 'User Admin' %></title>
+    <title><%= title || 'Administration panel' %></title>
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-<header>
-    <h1>User Administration</h1>
-    <% if (user) { %>
-        <p>
-            Welcome, <%= user.username %>
-        <form action="/auth/logout" method="post" style="display:inline;" onsubmit="return true;">
-            <button type="submit">Logout</button>
-        </form>
-        </p>
-    <% } %>
-    <hr />
-</header>
+<div class="container">
+    <header class="header">
+        <h1>Administration panel</h1>
+        <% if (user) { %>
+            <div class="welcome">
+                <form action="/auth/logout" method="post" onsubmit="return true;">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
+        <% } %>
+        <hr />
+    </header>
 
-<main>
-    <%- body %>
-</main>
-
+    <main>
+        <%- body %>
+    </main>
+</div>
 </body>
 </html>

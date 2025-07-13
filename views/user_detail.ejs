@@ -1,8 +1,16 @@
-<h2>User Detail</h2>
-<p><strong>Username:</strong> <%= user.username %></p>
-<p><strong>First Name:</strong> <%= user.first_name %></p>
-<p><strong>Last Name:</strong> <%= user.last_name %></p>
-<p><strong>Gender:</strong> <%= user.gender %></p>
-<p><strong>Birthdate:</strong> <%= user.birthdate %></p>
+<div class="container">
+    <h2 style="text-align: center; margin-bottom: 30px;">User information</h2>
 
-<a href="/users">Back to list</a> | <a href="/users/<%= user.id %>/edit">Edit</a>
+    <div style="display: flex; flex-direction: column; gap: 15px; font-size: 18px;">
+        <p><strong> Login:</strong> <%= user.username %></p>
+        <p><strong> First name:</strong> <%= user.first_name %></p>
+        <p><strong> Last name:</strong> <%= user.last_name %></p>
+        <p><strong> Gender:</strong> <%= user.gender === 'male' ? 'Male' : user.gender === 'female' ? 'Female' : '—' %></p>
+        <p><strong> Birthdate:</strong> <%= user.birthdate %></p>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between;">
+        <a href="/users" class="btn"> <-- Back to user list</a>
+        <a href="/users/<%= user.id %>/edit" class="btn"> Edit</a>
+    </div>
+</div>

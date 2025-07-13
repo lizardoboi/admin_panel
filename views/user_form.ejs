@@ -1,39 +1,50 @@
-<h2><%= isEdit ? 'Edit User' : 'Add User' %></h2>
+<div class="container">
+    <h2 style="text-align: center; margin-bottom: 30px;">
+        <%= isEdit ? 'Edit user' : 'Add user' %>
+    </h2>
 
-<form method="post" action="<%= isEdit ? '/users/' + user.id + '/edit' : '/users/add' %>">
-    <label>Username:
-        <input type="text" name="username" value="<%= user.username || '' %>" required />
-    </label><br/>
+    <% if(errors.message) { %>
+        <div class="error"><%= errors.message %></div>
+    <% } %>
 
-    <label>Password:
-        <input type="password" name="password" <%= isEdit ? '' : 'required' %> />
-        <% if(isEdit) { %><small>Leave blank to keep current password</small><% } %>
-    </label><br/>
+    <form method="post" action="<%= isEdit ? '/users/' + user.id + '/edit' : '/users/add' %>">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <label>Username:
+            <input type="text" name="username" value="<%= user.username || '' %>" required />
+        </label>
 
-    <label>First Name:
-        <input type="text" name="first_name" value="<%= user.first_name || '' %>" />
-    </label><br/>
+        <label>Password:
+            <input type="password" name="password" <%= isEdit ? '' : 'required' %> />
+            <% if(isEdit) { %>
+                <small style="color: #666;">Leave empty to keep the current password</small>
+            <% } %>
+        </label>
 
-    <label>Last Name:
-        <input type="text" name="last_name" value="<%= user.last_name || '' %>" />
-    </label><br/>
+        <label>First Name:
+            <input type="text" name="first_name" value="<%= user.first_name || '' %>" />
+        </label>
 
-    <label>Gender:
-        <select name="gender">
-            <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
-            <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
-        </select>
-    </label><br/>
+        <label>Last Name:
+            <input type="text" name="last_name" value="<%= user.last_name || '' %>" />
+        </label>
 
-    <label>Birthdate:
-        <input type="date" name="birthdate" value="<%= user.birthdate || '' %>" />
-    </label><br/>
+        <label>Gender:
+            <select name="gender">
+                <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+                <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+            </select>
+        </label>
 
-    <button type="submit"><%= isEdit ? 'Update' : 'Add' %></button>
-</form>
+        <label>Birthdate:
+            <input type="date" name="birthdate" value="<%= user.birthdate || '' %>" />
+        </label>
 
-<% if(errors.message) { %>
-    <p style="color:red;"><%= errors.message %></p>
-<% } %>
+        <button type="submit" class="btn">
+            <%= isEdit ? 'Save' : 'Add' %>
+        </button>
+    </form>
 
-<a href="/users">Back to list</a>
+    <div style="margin-top: 20px;">
+        <a href="/users" class="btn"> <-- Back to user list</a>
+    </div>
+</div>

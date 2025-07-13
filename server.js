@@ -8,7 +8,7 @@ async function start() {
         await sequelize.authenticate();
         console.log('Database connection established');
 
-        await sequelize.sync({ alter: true }); // синхронизируем модели с БД
+        await sequelize.sync({ alter: true });
         console.log('Database synchronized');
 
         app.listen(PORT, () => {

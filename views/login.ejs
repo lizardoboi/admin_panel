@@ -1,5 +1,6 @@
-<h2>Login</h2>
+<h2>Log in</h2>
 <form method="post" action="/auth/login">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
     <label>Username:
         <input type="text" name="username" required />
     </label><br/>

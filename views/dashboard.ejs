@@ -1,38 +1,57 @@
-<h2>Users List</h2>
-<a href="/users/add">Add New User</a>
+<div class="container">
+    <div class="navbar">
+        <h2>User list</h2>
+        <a href="/users/add" class="btn"> Add User</a>
+    </div>
 
-<table border="1" cellpadding="5" cellspacing="0">
-    <thead>
-    <tr>
-        <th><a href="?sort=username&order=<%= sort === 'username' && order === 'ASC' ? 'DESC' : 'ASC' %>">Username</a></th>
-        <th><a href="?sort=first_name&order=<%= sort === 'first_name' && order === 'ASC' ? 'DESC' : 'ASC' %>">First Name</a></th>
-        <th><a href="?sort=birthdate&order=<%= sort === 'birthdate' && order === 'ASC' ? 'DESC' : 'ASC' %>">Birthdate</a></th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% users.forEach(user => { %>
+    <table>
+        <thead>
         <tr>
-            <td><a href="/users/<%= user.id %>"><%= user.username %></a></td>
-            <td><%= user.first_name %></td>
-            <td><%= user.birthdate %></td>
-            <td>
-                <a href="/users/<%= user.id %>/edit">Edit</a> |
-                <form method="post" action="/users/<%= user.id %>/delete" style="display:inline;" onsubmit="return confirm('Delete this user?');">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
+            <th>
+                <a href="?sort=username&order=<%= sort === 'username' && order === 'ASC' ? 'DESC' : 'ASC' %>">
+                    Username <%= sort === 'username' ? (order === 'ASC' ? '↑' : '↓') : '' %>
+                </a>
+            </th>
+            <th>
+                <a href="?sort=first_name&order=<%= sort === 'first_name' && order === 'ASC' ? 'DESC' : 'ASC' %>">
+                    Name <%= sort === 'first_name' ? (order === 'ASC' ? '↑' : '↓') : '' %>
+                </a>
+            </th>
+            <th>
+                <a href="?sort=birthdate&order=<%= sort === 'birthdate' && order === 'ASC' ? 'DESC' : 'ASC' %>">
+                    Birthdate <%= sort === 'birthdate' ? (order === 'ASC' ? '↑' : '↓') : '' %>
+                </a>
+            </th>
+            <th>Actions</th>
         </tr>
-    <% }) %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <% users.forEach(user => { %>
+            <tr>
+                <td><a href="/users/<%= user.id %>"><%= user.username %></a></td>
+                <td><%= user.first_name %></td>
+                <td><%= user.birthdate %></td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="/users/<%= user.id %>/edit" class="btn"> Edit</a>
+                        <form method="post" action="/users/<%= user.id %>/delete" onsubmit="return confirm('Are you sure you want to delete?');">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button type="submit" class="btn btn-danger"> Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
 
-<div>
-    <% for(let i=1; i <= totalPages; i++) { %>
-        <% if(i === currentPage) { %>
-            <strong><%= i %></strong>
-        <% } else { %>
-            <a href="?page=<%= i %>&sort=<%= sort %>&order=<%= order %>"><%= i %></a>
+    <div style="margin-top: 20px; text-align: center;">
+        <% for(let i = 1; i <= totalPages; i++) { %>
+            <% if (i === currentPage) { %>
+                <strong style="margin: 0 5px;"><%= i %></strong>
+            <% } else { %>
+                <a href="?page=<%= i %>&sort=<%= sort %>&order=<%= order %>" class="btn"><%= i %></a>
+            <% } %>
         <% } %>
-    <% } %>
+    </div>
 </div>
