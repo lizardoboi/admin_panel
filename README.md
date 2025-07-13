@@ -12,8 +12,8 @@ This is the Admin Panel project. It uses Node.js with Express, Sequelize, Postgr
 1. Clone the repository or unzip the project archive.
 
 2. Install dependencies by running:
-   
----- npm install
+
+```npm install```
 
 This will install the following packages:
 - bcrypt
@@ -35,14 +35,14 @@ This will install the following packages:
 
 3. Configure database connection in the .env file:
 
-PORT = your_port
-SESSION_SECRET = your_secret_key
-DB_NAME = admin_panel_db
-DB_USER = admin_user
-DB_PASS = admin123
-DB_HOST = your_host
+- PORT = your_port
+- SESSION_SECRET = your_secret_key
+- DB_NAME = admin_panel_db
+- DB_USER = admin_user
+- DB_PASS = admin123
+- DB_HOST = your_host
 
 ## Running the Application
 1. Start the application with the command:
---- npm start
-2. The server will start and listen on the configured port
+   ```npm start```
+3. The server will start and listen on the configured port
