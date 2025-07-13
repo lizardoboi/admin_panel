@@ -11,8 +11,8 @@ module.exports = (req, res, next) => {
         errors.push('Password is required and must be at least 6 characters.');
     }
 
-    if (gender && !['male', 'female', 'other'].includes(gender)) {
-        errors.push('Gender must be one of: male, female, other.');
+    if (gender && !['male', 'female'].includes(gender)) {
+        errors.push('Gender must be one of: male, female');
     }
 
     if (birthdate && isNaN(Date.parse(birthdate))) {

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userController = require('../controllers/userController');
 const validateUser = require('../middlewares/validateUser');
-const authMiddleware = require('../middlewares/auth'); // Проверка JWT токена
+const authMiddleware = require('../middlewares/auth_mid'); // Проверка JWT токена
 
 router.use(authMiddleware);
 

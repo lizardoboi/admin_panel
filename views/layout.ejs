@@ -12,11 +12,6 @@
     <% if (user) { %>
         <p>
             Welcome, <%= user.username %>
-            |
-            <a href="/users">User List</a>
-            |
-            <a href="/users/add">Add User (test)</a>
-            |
         <form action="/auth/logout" method="post" style="display:inline;" onsubmit="return true;">
             <button type="submit">Logout</button>
         </form>

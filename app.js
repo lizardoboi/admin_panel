@@ -6,7 +6,7 @@ const expressLayouts = require('express-ejs-layouts');
 
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
-const authMiddleware = require('./middlewares/auth');
+const authMiddleware = require('./middlewares/auth_mid');
 
 const app = express();
 
