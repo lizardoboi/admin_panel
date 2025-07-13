@@ -46,3 +46,4 @@ This will install the following packages:
 1. Start the application with the command:
    ```npm start```
 2. The server will start and listen on the configured port
+3. To enter the Administration panel use login: admin and password: admin123
