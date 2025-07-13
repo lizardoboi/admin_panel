@@ -45,4 +45,4 @@ This will install the following packages:
 ## Running the Application
 1. Start the application with the command:
    ```npm start```
-3. The server will start and listen on the configured port
+2. The server will start and listen on the configured port
