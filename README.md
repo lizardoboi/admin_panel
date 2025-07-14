@@ -31,16 +31,17 @@ This will install the following packages:
 ## Database Setup
 1. Create a PostgreSQL database.
 
-2. Import the provided SQL dump file to create tables and insert test data. (login: admin_user, password: admin123)
+2. Import the provided SQL dump file to create tables and insert test data.
 
 3. Configure database connection in the .env file:
 
 - PORT=your_port
 - SESSION_SECRET=your_secret_key
 - DB_NAME=admin_panel_db
-- DB_USER=admin_user
-- DB_PASS=admin123
+- DB_USER=your_user
+- DB_PASS=your_password
 - DB_HOST=your_host
+- DB_PORT=your_port
 
 ## Running the Application
 1. Start the application with the command:
