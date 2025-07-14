@@ -1,7 +1,7 @@
 # Admin Panel
 
 ## Description
-This is the Admin Panel project. It uses Node.js with Express, Sequelize, PostgreSQL, and other libraries.
+ It uses Node.js with Express, Sequelize, PostgreSQL, and other libraries.
 
 ## Prerequisites
 - Node.js (v14 or higher recommended)
@@ -35,12 +35,12 @@ This will install the following packages:
 
 3. Configure database connection in the .env file:
 
-- PORT = your_port
-- SESSION_SECRET = your_secret_key
-- DB_NAME = admin_panel_db
-- DB_USER = admin_user
-- DB_PASS = admin123
-- DB_HOST = your_host
+- PORT=your_port
+- SESSION_SECRET=your_secret_key
+- DB_NAME=admin_panel_db
+- DB_USER=admin_user
+- DB_PASS=admin123
+- DB_HOST=your_host
 
 ## Running the Application
 1. Start the application with the command:
