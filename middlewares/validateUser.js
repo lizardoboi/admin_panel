@@ -39,7 +39,13 @@ module.exports = (req, res, next) => {
 
     //if any errors found, return 400 with error messages
     if (errors.length > 0) {
-        return res.status(400).json({ errors });
+        return res.status(400).render('user_form', {
+            title: isEdit ? 'Edit user' : 'Add user',
+            errors,
+            user: req.body,
+            isEdit,
+            csrfToken: req.csrfToken()
+        });
     }
 
     //all validations passed

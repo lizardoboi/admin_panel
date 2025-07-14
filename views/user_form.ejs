@@ -3,8 +3,14 @@
         <%= isEdit ? 'Edit user' : 'Add user' %>
     </h2>
 
-    <% if(errors.message) { %>
-        <div class="error"><%= errors.message %></div>
+    <% if (errors && errors.length) { %>
+        <div class="error">
+            <ul>
+                <% errors.forEach(function(error) { %>
+                    <li><%= error %></li>
+                <% }); %>
+            </ul>
+        </div>
     <% } %>
 
     <form method="post" action="<%= isEdit ? '/users/' + user.id + '/edit' : '/users/add' %>">
