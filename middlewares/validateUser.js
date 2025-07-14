@@ -29,11 +29,11 @@ module.exports = (req, res, next) => {
         errors.push('Last name is required and must be a non-empty string.');
     }
 
-    if (gender && !['male', 'female'].includes(gender)) {
+    if (!gender || !['male', 'female'].includes(gender)) {
         errors.push('Gender must be one of: male, female.');
     }
 
-    if (birthdate && isNaN(Date.parse(birthdate))) {
+    if (!birthdate || isNaN(Date.parse(birthdate))) {
         errors.push('Birthdate must be a valid date in YYYY-MM-DD format.');
     }
 
